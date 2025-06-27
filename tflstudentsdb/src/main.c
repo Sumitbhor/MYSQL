@@ -1,4 +1,4 @@
-#include "connection.c"
+#include "../src/connection.c"
 
 int main() {
     DBManager db;
