@@ -1,12 +1,4 @@
 #include "../include/header.h"
-<<<<<<< HEAD
-
-// function to display rec from database named tflstudent
-
-void displayTopics(MYSQL * conn){
-            MYSQL_RES *res;
-            MYSQL_ROW row;
-=======
 // Function to display records from the 'student' table
 void displayTopics() {
     MYSQL_RES *res;
@@ -17,7 +9,6 @@ void displayTopics() {
         fprintf(stderr, "SELECT * FROM students failed. Error: %s\n", mysql_error(conn));
         return;
     }
->>>>>>> 4f97761d21707a551d128842ec42d0fa979d3930
 
     // Store the result set
     res = mysql_store_result(conn);
