@@ -1,4 +1,4 @@
-#include "connection.c"
+#include "..\include\header.h"
 
 int main() {
     DBManager db;
