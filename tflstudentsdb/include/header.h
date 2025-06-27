@@ -2,7 +2,7 @@
 #include<stdlib.h>
 #include <string.h>
 #include<mysql.h>
-void 
+int addrecord(struct student *ptrstudent, MYSQL *conn);
 struct student
 {
     int id ;
