@@ -1,14 +1,12 @@
-#include <stdio.h>
-#include <mysql.h>
-
+#include "../include/header.h"
 // Function to display records from the 'student' table
 void displayTopics() {
     MYSQL_RES *res;
     MYSQL_ROW row;
 
     // Execute SQL query
-    if (mysql_query(conn, "SELECT * FROM student")) {
-        fprintf(stderr, "SELECT * FROM student failed. Error: %s\n", mysql_error(conn));
+    if (mysql_query(conn, "SELECT * FROM students")) {
+        fprintf(stderr, "SELECT * FROM students failed. Error: %s\n", mysql_error(conn));
         return;
     }
 
@@ -21,7 +19,7 @@ void displayTopics() {
 
     // Fetch and display each row
     while ((row = mysql_fetch_row(res)) != NULL) {
-        printf("ID: %s, Title: %s, URL: %s\n", row[0], row[1], row[2]);
+        printf("ID: %s, First Name: %s, Last Name: %s,Email Id:%s ,Mobile No.: %d\n", row[0], row[1], row[2],row[3], atoi(row[4]));
     }
 
     // Clean up
