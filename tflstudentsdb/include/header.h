@@ -8,6 +8,6 @@ struct student
     int id ;
     char firstname[10] ;
     char lastname[10] ;
-    char emainID[50];
+    char emailID[50];
     int mobileno ;
 };
