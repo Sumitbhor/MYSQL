@@ -3,6 +3,9 @@
 #include <string.h>
 #include<mysql.h>
 int addrecord(struct student *ptrstudent, MYSQL *conn);
+
+=======
+int addrecord(struct student *ptrstudent, MYSQL *conn);
 struct student
 {
     int id ;
