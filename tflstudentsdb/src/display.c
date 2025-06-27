@@ -1,9 +1,8 @@
-//#include "../include/header.h"
-#include <iostream>
-#include <mysql/mysql.h>
+#include "../include/header.h"
+
 // function to display rec from database named tflstudent
 
-void displayTopics(){
+void displayTopics(MYSQL * conn){
             MYSQL_RES *res;
             MYSQL_ROW row;
 

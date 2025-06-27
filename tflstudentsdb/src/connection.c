@@ -14,7 +14,7 @@ void initDB(DBManager *db) {
         exit(EXIT_FAILURE);
     }
 
-    if (mysql_real_connect(db->conn, "localhost", "root", "password", "tflstudentdb", 0, NULL, 0) == NULL) {
+    if (mysql_real_connect(db->conn, "localhost", "root", "root123", "tflstudentdb", 0, NULL, 0) == NULL) {
         fprintf(stderr, "mysql_real_connect() failed\n");
         mysql_close(db->conn);
         exit(EXIT_FAILURE);
