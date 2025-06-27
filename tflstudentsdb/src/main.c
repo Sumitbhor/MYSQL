@@ -1,11 +1,12 @@
 #include "..\include\header.h"
 
-int main() {
+int main() 
+{
     DBManager db;
     initDB(&db);
     int choice = 0;
 int totalstudent;
-int main(){
+
     printf("total number of student ");
     scanf("%d",&totalstudent); 
 
