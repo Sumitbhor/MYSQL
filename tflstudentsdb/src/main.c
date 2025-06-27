@@ -5,8 +5,12 @@ int main()
     DBManager db;
     initDB(&db);
     int choice = 0;
+<<<<<<< HEAD
 int totalstudent;
 
+=======
+    int totalstudent;
+>>>>>>> 0cffca23bd2e5efc0a0087aad6c283cdb725daf0
     printf("total number of student ");
     scanf("%d",&totalstudent); 
 
@@ -18,17 +22,18 @@ int totalstudent;
         printf("3.update ");
         printf("4.delete ");
         printf("5.exit ");
-    switch (choice)
-    {
-    case 1 :
-         for (int i = 0; i < totalstudent; i++){
-        addrecord(data[totalstudent],)
+        switch (choice)
+        {
+            case 1 :
+                DBManager db;
+                for (int i = 0; i < totalstudent; i++){
+                addrecord(data[totalstudent],db.conn);
+                }
+            break;
+            
+            default:
+                break;
         }
-        break;
-    
-    default:
-        break;
-    }
     }
     closeDB(&db);
     return 0;

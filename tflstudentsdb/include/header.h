@@ -3,6 +3,7 @@
 #include <string.h>
 #include<mysql.h>
 
+<<<<<<< HEAD
 int addrecord(struct student *ptrstudent, MYSQL *conn);
 int deleterecord(int id, MYSQL *conn) ;
 void initDB(DBManager *db);
@@ -11,6 +12,8 @@ void displayTopics();
 
 
 
+=======
+>>>>>>> 0cffca23bd2e5efc0a0087aad6c283cdb725daf0
 struct student
 {
     int id ;
