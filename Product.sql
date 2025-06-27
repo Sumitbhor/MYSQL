@@ -12,4 +12,22 @@ drop table product ;
  delete from product where description= "bad" and quantity=500;
  select id , name from product ; 
  ALTER TABLE product MODIFY COLUMN description varchar(82);
-describe product
+describe product;
+
+ALTER TABLE product
+ADD PRIMARY KEY (id);
+
+ALTER TABLE product
+MODIFY quantity int NOT NULL;
+
+CREATE TABLE users (
+    id INT PRIMARY KEY,
+    username VARCHAR(50) NOT NULL
+);
+
+
+insert into users values(1,"sanika");
+
+insert into users values(1,"sumit");
+
+select * from users;
