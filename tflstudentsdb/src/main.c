@@ -3,7 +3,7 @@
 int main() 
 {
     DBManager db;
-<<<<<<< HEAD
+
     student s;
     int choice, id;
 
@@ -55,15 +55,10 @@ int main()
 
     } while (choice != 5);
 
-=======
     initDB(&db);
     int choice = 0;
-<<<<<<< HEAD
 int totalstudent;
 
-=======
-    int totalstudent;
->>>>>>> 0cffca23bd2e5efc0a0087aad6c283cdb725daf0
     printf("total number of student ");
     scanf("%d",&totalstudent); 
 
@@ -88,7 +83,6 @@ int totalstudent;
                 break;
         }
     }
->>>>>>> 959b05d60b60c62d0d58c0462a357c622396da25
     closeDB(&db);
     return 0;
 }
