@@ -17,5 +17,4 @@ if (conn == NULL)
     return EXIT_FAILURE;
 }
 
-
 }

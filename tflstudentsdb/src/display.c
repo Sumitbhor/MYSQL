@@ -1,6 +1,6 @@
 #include "../include/header.h"
 // Function to display records from the 'student' table
-void displayTopics() {
+void displayTopics( MYSQL *conn) {
     MYSQL_RES *res;
     MYSQL_ROW row;
 

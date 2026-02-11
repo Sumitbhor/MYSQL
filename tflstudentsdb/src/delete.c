@@ -12,5 +12,5 @@ int deleterecord(int id, MYSQL *conn) {
     }
 
     printf("Record with ID %d deleted successfully.\n", id);
-    return 0; // Return 0 on success
+    return 0 ; // Return 0 on success
 }
