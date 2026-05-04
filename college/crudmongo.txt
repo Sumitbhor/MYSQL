@@ -1,0 +1,94 @@
+use article_db
+
+db.createCollection("articles")
+
+db.articles.insertMany([
+{
+    title: "AI in Healthcare",
+    content: "AI helps disease detection",
+    author: "Sharma",
+    author_age: 45,
+    dop: "2026-01-10",
+    category: "IT",
+    comment: [
+        { name: "Riya", remarks: "Good article" }
+    ]
+},
+{
+    title: "Politics Today",
+    content: "Political analysis",
+    author: "Mehta",
+    author_age: 50,
+    dop: "2026-02-12",
+    category: "Politics",
+    comment: [
+        { name: "Neha", remarks: "Nice explanation" }
+    ]
+}
+])
+
+db.articles.find()
+
+db.articles.findOne({ author: "Sharma" })
+
+db.articles.updateOne(
+{ "comment.name": "Riya" },
+{ $set: { "comment.$.remarks": "Excellent article" } }
+)
+
+db.articles.updateOne(
+{ _id: 101 },
+{
+    $set: {
+        title: "Cyber Security",
+        content: "Security basics",
+        author: "Kumar",
+        author_age: 38,
+        dop: "2026-04-01",
+        category: "IT",
+        comment: []
+    }
+},
+{ upsert: true }
+)
+
+db.articles.insertOne({
+    title: "Data Science",
+    content: "ML concepts",
+    author: "Singh",
+    author_age: 42,
+    dop: "2026-04-02",
+    category: "IT",
+    comment: []
+})
+
+db.articles.updateMany(
+{ category: "IT" },
+{ $set: { category: "Information Technology" } }
+)
+
+db.articles.updateOne(
+{ title: "AI Ethics" },
+{
+    $set: {
+        title: "AI Ethics",
+        content: "Ethical AI",
+        author: "Verma",
+        author_age: 60,
+        dop: "2026-04-23",
+        category: "Information Technology",
+        comment: []
+    }
+},
+{ upsert: true }
+)
+
+db.articles.find({ author_age: { $gt: 40 } })
+
+db.articles.find({ author_age: { $gte: 40, $lte: 80 } })
+
+db.articles.deleteOne({ author: "Sharma" })
+
+db.articles.deleteMany({ category: "Politics" })
+
+db.articles.find()

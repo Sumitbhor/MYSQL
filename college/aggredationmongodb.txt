@@ -1,0 +1,101 @@
+use orders_db
+
+db.createCollection("orders")
+
+db.orders.insertMany([
+{ cust_id: 1, item_name: "Laptop", dtOfOrder: ISODate("2026-04-01"), quantity: 1, amount: 50000, status: "D" },
+{ cust_id: 2, item_name: "Mouse", dtOfOrder: ISODate("2026-04-02"), quantity: 2, amount: 1000, status: "P" },
+{ cust_id: 1, item_name: "Keyboard", dtOfOrder: ISODate("2026-04-03"), quantity: 1, amount: 2000, status: "D" },
+{ cust_id: 3, item_name: "Monitor", dtOfOrder: ISODate("2026-04-03"), quantity: 1, amount: 12000, status: "P" },
+{ cust_id: 4, item_name: "Laptop", dtOfOrder: ISODate("2026-04-04"), quantity: 1, amount: 52000, status: "D" },
+{ cust_id: 2, item_name: "USB Cable", dtOfOrder: ISODate("2026-04-05"), quantity: 3, amount: 300, status: "D" },
+{ cust_id: 5, item_name: "Mouse", dtOfOrder: ISODate("2026-04-05"), quantity: 2, amount: 1000, status: "P" },
+{ cust_id: 3, item_name: "Laptop", dtOfOrder: ISODate("2026-04-06"), quantity: 1, amount: 48000, status: "D" },
+{ cust_id: 4, item_name: "Keyboard", dtOfOrder: ISODate("2026-04-07"), quantity: 1, amount: 2500, status: "P" },
+{ cust_id: 5, item_name: "Monitor", dtOfOrder: ISODate("2026-04-08"), quantity: 1, amount: 11000, status: "D" }
+])
+
+db.orders.createIndex({ cust_id: 1 })
+
+db.orders.createIndex({ item_name: 1 })
+
+db.orders.distinct("cust_id")
+
+db.orders.aggregate([
+{
+  $group: {
+    _id: null,
+    totalOrders: { $sum: 1 },
+    pendingOrders: { $sum: { $cond: [{ $eq: ["$status", "P"] }, 1, 0] } }
+  }
+}
+])
+
+db.orders.find().sort({ amount: 1 })
+
+db.orders.find().sort({ amount: -1 })
+
+db.orders.find({ status: "P" })
+
+db.orders.aggregate([
+{
+  $group: {
+    _id: "$cust_id",
+    totalOrders: { $sum: 1 }
+  }
+}
+])
+
+db.orders.aggregate([
+{ $match: { status: "P" } },
+{
+  $group: {
+    _id: "$cust_id",
+    pendingAmount: { $sum: "$amount" }
+  }
+},
+{ $sort: { pendingAmount: -1 } }
+])
+
+db.orders.aggregate([
+{ $match: { status: "D" } },
+{
+  $group: {
+    _id: "$cust_id",
+    totalAmount: { $sum: "$amount" }
+  }
+},
+{ $sort: { totalAmount: 1 } }
+])
+
+db.orders.aggregate([
+{
+  $group: {
+    _id: "$item_name",
+    totalQuantity: { $sum: "$quantity" }
+  }
+},
+{ $sort: { totalQuantity: -1 } },
+{ $limit: 3 }
+])
+
+db.orders.aggregate([
+{
+  $group: {
+    _id: "$dtOfOrder",
+    count: { $sum: 1 }
+  }
+},
+{ $sort: { count: -1 } },
+{ $limit: 1 }
+])
+
+db.orders.aggregate([
+{
+  $group: {
+    _id: "$cust_id",
+    firstOrder: { $min: "$dtOfOrder" },
+    lastOrder: { $max: "$dtOfOrder" }
+  }
+}
+])
