@@ -1,3 +1,6 @@
+sudo systemctl start mongod
+mongosh
+
 use article_db
 
 db.createCollection("articles")

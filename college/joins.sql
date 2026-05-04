@@ -151,7 +151,7 @@ WHERE e.salary > 25000;
 CREATE VIEW salary_stats_per_branch AS
 SELECT branch_id,
        AVG(salary) AS avg_salary,
-       SUM(salary) AS total_salary
+       SUM(salary) AS total_salary  
 FROM employee_master
 GROUP BY branch_id;
 

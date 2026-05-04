@@ -51,7 +51,6 @@ DELIMITER ;
 
 CALL calc_bonus();
 
-
 DELIMITER //
 
 CREATE FUNCTION count_emp(sal INT)
